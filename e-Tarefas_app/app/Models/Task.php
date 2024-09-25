@@ -32,4 +32,8 @@ class Task extends Model
         return $this->hasMany(TaskActivityLogsModel::class);
     }
 
+    public function notifications() {
+        return $this->hasMany(NotificationModel::class);
+    }
+
 }

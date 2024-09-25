@@ -56,6 +56,14 @@ class User extends Authenticatable
     }
 
     public function taskComments() {
-        return $$this->hasMany(TaskCommentModel::class);
+        return $this->hasMany(TaskCommentModel::class);
+    }
+
+    public function taskActivityLogs() {
+        return $this->hasMany(TaskActivityLogsModel::class);
+    }
+
+    public function notifications() {
+        return $this->hasMany(NotificationModel::class);
     }
 }
