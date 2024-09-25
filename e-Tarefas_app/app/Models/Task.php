@@ -25,15 +25,22 @@ class Task extends Model
     }
 
     public function taskComments() {
-        return $this->hasMany(TaskCommentModel::class);
+        return $this->hasMany(TaskComment::class);
     }
 
     public function taskActivityLogs() {
-        return $this->hasMany(TaskActivityLogsModel::class);
+        return $this->hasMany(TaskActivityLogs::class);
     }
 
     public function notifications() {
-        return $this->hasMany(NotificationModel::class);
+        return $this->hasMany(Notification::class);
+    }
+
+    // Uma tarefa pode ter deversos colaboradores
+    public function collaborarions() {
+        return $this->belongsToMany(
+            User::class, 'task_colaborations', 'user_id', 'task_id'
+        )->withPivot('access_level', 'status');
     }
 
 }

@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NotificationModel extends Model
+class TaskComment extends Model
 {
     use HasFactory;
 
-    protected $table = 'notifications';
+    protected $table = 'task_comments';
 
     protected $fillable = [
         'user_id',
         'task_id',
-        'message',
-        'type',
-        'status'
+        'comment'
     ];
-    
+
     public function user() {
         return $this->belongsTo(User::class);
     }

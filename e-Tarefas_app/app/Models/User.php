@@ -56,14 +56,21 @@ class User extends Authenticatable
     }
 
     public function taskComments() {
-        return $this->hasMany(TaskCommentModel::class);
+        return $this->hasMany(TaskComment::class);
     }
 
     public function taskActivityLogs() {
-        return $this->hasMany(TaskActivityLogsModel::class);
+        return $this->hasMany(TaskActivityLogs::class);
     }
 
     public function notifications() {
-        return $this->hasMany(NotificationModel::class);
+        return $this->hasMany(Notification::class);
+    }
+
+    // Um usuario pode colaborar em diversas tarefas N:N
+    public function taskColaborations() {
+        return $this->belongsToMany(
+            Task::class, 'task_collaborations', 'user_id', 'task_id'
+        )->withPivot('access_level', 'status');
     }
 }
