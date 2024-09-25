@@ -5,24 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TaskCommentModel extends Model
+class TaskActivityLogsModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'task_comments';
+    protected $table = 'task_activity_logs';
 
     protected $fillable = [
-        'user_id',
         'task_id',
-        'comment'
+        'user_id',
+        'action'
     ];
-
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
 
     public function task() {
         return $this->belongsTo(Task::class);
     }
-
 }
