@@ -29,7 +29,7 @@ class Task extends Model
     }
 
     public function taskActivityLogs() {
-        return $this->hasMany(TaskActivityLogs::class);
+        return $this->hasMany(TaskActivityLog::class);
     }
 
     public function notifications() {

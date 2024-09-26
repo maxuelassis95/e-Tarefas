@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->dateTime('due_date');
-            $table->string('status');
+            $table->string('status'); // (completed, pending, in_progress)
             $table->timestamps();
         });
     }
